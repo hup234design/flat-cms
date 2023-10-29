@@ -2,9 +2,9 @@
 
 namespace Hup234design\FlatCms\Tests;
 
+use Hup234design\FlatCms\FlatCmsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Hup234design\FlatCms\FlatCmsServiceProvider;
 
 class TestCase extends Orchestra
 {

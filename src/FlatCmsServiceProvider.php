@@ -2,9 +2,9 @@
 
 namespace Hup234design\FlatCms;
 
+use Hup234design\FlatCms\Commands\FlatCmsCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Hup234design\FlatCms\Commands\FlatCmsCommand;
 
 class FlatCmsServiceProvider extends PackageServiceProvider
 {
