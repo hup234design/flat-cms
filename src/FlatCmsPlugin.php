@@ -2,14 +2,13 @@
 
 namespace Hup234design\FlatCms;
 
+use Filament\Contracts\Plugin;
 use Filament\Navigation\MenuItem;
 use Filament\Panel;
-use Filament\Contracts\Plugin;
 use Illuminate\Support\Facades\DB;
 
 class FlatCmsPlugin implements Plugin
 {
-
     public function getId(): string
     {
         return 'filament-cms';
@@ -26,29 +25,29 @@ class FlatCmsPlugin implements Plugin
             //
         ];
 
-//        $conditionalResources = [
-//            'services' => [
-//                ServiceResource::class,
-//                ServiceCategoryResource::class,
-//            ],
-//            'events' => [
-//                EventResource::class,
-//                EventCategoryResource::class,
-//            ],
-//            'projects' => [
-//                ProjectResource::class,
-//                ProjectCategoryResource::class,
-//            ],
-//            'testimonials' => [
-//                TestimonialResource::class,
-//            ]
-//        ];
-//
-//        foreach ($conditionalResources as $configKey => $resourceNames) {
-//            if (config('cms.' . $configKey, false)) {
-//                $resources = array_merge($resources, $resourceNames);
-//            }
-//        }
+        //        $conditionalResources = [
+        //            'services' => [
+        //                ServiceResource::class,
+        //                ServiceCategoryResource::class,
+        //            ],
+        //            'events' => [
+        //                EventResource::class,
+        //                EventCategoryResource::class,
+        //            ],
+        //            'projects' => [
+        //                ProjectResource::class,
+        //                ProjectCategoryResource::class,
+        //            ],
+        //            'testimonials' => [
+        //                TestimonialResource::class,
+        //            ]
+        //        ];
+        //
+        //        foreach ($conditionalResources as $configKey => $resourceNames) {
+        //            if (config('cms.' . $configKey, false)) {
+        //                $resources = array_merge($resources, $resourceNames);
+        //            }
+        //        }
 
         $panel
             ->navigationGroups([
@@ -104,39 +103,38 @@ class FlatCmsPlugin implements Plugin
             ])
             ->maxContentWidth('full')
             ->plugins([
-//                FilamentNavigation::make()
-//                    ->itemType('Home',[])
-//                    ->itemType('Page', [
-//                        Select::make('id')
-//                            ->options(function () {
-//                                return DB::table('pages')
-//                                    ->where('home', false)
-//                                    ->pluck('title', 'id');
-//                            })
-//                    ])
-//                    ->itemType('Index Page', [
-//                        Select::make('Page')
-//                            ->options(function () {
-//                                return DB::table('index_pages')
-//                                    ->pluck('title', 'id');
-//                            })
-//                    ])
-//                    ->itemType('Dropdown', []),
-//                FilamentPeekPlugin::make(),
+                //                FilamentNavigation::make()
+                //                    ->itemType('Home',[])
+                //                    ->itemType('Page', [
+                //                        Select::make('id')
+                //                            ->options(function () {
+                //                                return DB::table('pages')
+                //                                    ->where('home', false)
+                //                                    ->pluck('title', 'id');
+                //                            })
+                //                    ])
+                //                    ->itemType('Index Page', [
+                //                        Select::make('Page')
+                //                            ->options(function () {
+                //                                return DB::table('index_pages')
+                //                                    ->pluck('title', 'id');
+                //                            })
+                //                    ])
+                //                    ->itemType('Dropdown', []),
+                //                FilamentPeekPlugin::make(),
             ]);
-//            ->sidebarCollapsibleOnDesktop(true)
-//            ->maxContentWidth('full');
+        //            ->sidebarCollapsibleOnDesktop(true)
+        //            ->maxContentWidth('full');
     }
 
     public function boot(Panel $panel): void
     {
-//        NavigationResource::navigationGroup('Site Management');
-//        NavigationResource::navigationSort(2);
+        //        NavigationResource::navigationGroup('Site Management');
+        //        NavigationResource::navigationSort(2);
     }
 
-    public static function get(): Plugin | \Filament\FilamentManager
+    public static function get(): Plugin|\Filament\FilamentManager
     {
         return filament(app(static::class)->getId());
     }
-
 }

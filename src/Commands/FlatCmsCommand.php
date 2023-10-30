@@ -16,76 +16,76 @@ class FlatCmsCommand extends Command
     public function handle(): int
     {
 
-        $this->line("************************");
-        $this->line("*     FILAMENT CMS     *");
-        $this->line("************************");
+        $this->line('************************');
+        $this->line('*     FILAMENT CMS     *');
+        $this->line('************************');
         $this->newLine(1);
 
         // Spatie Media Library Plugin
-        if( ! Schema::hasTable('media') ) {
+        if (! Schema::hasTable('media')) {
             $this->callSilent('vendor:publish', [
-                "--provider" => "Spatie\MediaLibrary\MediaLibraryServiceProvider",
-                "--tag" => "migrations",
+                '--provider' => "Spatie\MediaLibrary\MediaLibraryServiceProvider",
+                '--tag' => 'migrations',
             ]);
-            $this->callSilent("migrate");
+            $this->callSilent('migrate');
         }
 
         // Spatie Tags Plugin
-        if( ! Schema::hasTable('tags') ) {
+        if (! Schema::hasTable('tags')) {
             $this->callSilent('vendor:publish', [
-                "--provider" => "Spatie\Tags\TagsServiceProvider",
-                "--tag" => "tags-migrations",
+                '--provider' => "Spatie\Tags\TagsServiceProvider",
+                '--tag' => 'tags-migrations',
             ]);
-            $this->callSilent("migrate");
+            $this->callSilent('migrate');
         }
 
         // Spatie Roles Permissions Plugin
-        if( ! Schema::hasTable('permissions') ) {
+        if (! Schema::hasTable('permissions')) {
             $this->callSilent('vendor:publish', [
-                "--provider" => "Spatie\Permission\PermissionServiceProvider",
+                '--provider' => "Spatie\Permission\PermissionServiceProvider",
             ]);
             $this->callSilent('vendor:publish', [
-                "--tag" => "filament-spatie-roles-permissions-config",
-                "--force" => true
+                '--tag' => 'filament-spatie-roles-permissions-config',
+                '--force' => true,
             ]);
-            $this->callSilent("migrate");
+            $this->callSilent('migrate');
         }
 
         // Spatie Google Fonts Plugin
         $this->callSilent('vendor:publish', [
-            "--provider" => "Spatie\GoogleFonts\GoogleFontsServiceProvider",
-            "--tag" => "google-fonts-plugin",
+            '--provider' => "Spatie\GoogleFonts\GoogleFontsServiceProvider",
+            '--tag' => 'google-fonts-plugin',
         ]);
 
         // Spatie Eloquent Sortable
         $this->callSilent('vendor:publish', [
-            "--tag" => "eloquent-sortable-config",
+            '--tag' => 'eloquent-sortable-config',
         ]);
 
         // Laravel SEO Plugin
-        if( ! Schema::hasTable('seo') ) {
+        if (! Schema::hasTable('seo')) {
             $this->callSilent('vendor:publish', [
-                "--tag" => "seo-migrations",
+                '--tag' => 'seo-migrations',
             ]);
             $this->callSilent('vendor:publish', [
-                "--tag" => "seo-config",
+                '--tag' => 'seo-config',
             ]);
-            $this->callSilent("migrate");
+            $this->callSilent('migrate');
         }
 
         // Filament Breezy Plugin
-        if( ! Schema::hasTable('breezy_sessions') ) {
-            $this->call("breezy:install");
+        if (! Schema::hasTable('breezy_sessions')) {
+            $this->call('breezy:install');
         }
 
         // FLAT CMS Migrations
         $this->call('vendor:publish', [
-            "--tag" => "flat-cms-migrations",
+            '--tag' => 'flat-cms-migrations',
         ], true);
 
         // FLAT CMS Config
         $this->call('vendor:publish', [
-            "--tag" => "flat-cms-config",
+            '--tag' => 'flat-cms-config',
         ], true);
 
         $this->comment('All done');
